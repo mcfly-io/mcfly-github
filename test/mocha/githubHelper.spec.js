@@ -96,7 +96,7 @@ describe('githubHelper', () => {
                     filepath: filePath
                 })
                 .then(buffer => {
-                    expect(buffer).to.exist;
+                    expect(buffer).not.to.be.null;
                     done();
                 })
                 .catch(done);
