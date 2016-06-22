@@ -86,6 +86,38 @@ describe('githubHelper', () => {
         });
     });
 
+    describe('getFileAsBuffer()', () => {
+        it('when file exists it should succeed', (done) => {
+            var github = githubHelper.buildClient();
+            var repoName = 'Yoobic/loopback-node-red';
+            var filePath = 'templates/workbook_4.0.0.xlsx';
+            githubHelper.getFileAsBuffer(github, {
+                    repo: repoName,
+                    filepath: filePath
+                })
+                .then(buffer => {
+                    expect(buffer).to.exist;
+                    done();
+                })
+                .catch(done);
+        });
+
+        it('when file does not exist it should return null', (done) => {
+            var github = githubHelper.buildClient();
+            var repoName = 'Yoobic/loopback-node-red';
+            var filePath = 'indeeeeeex.js';
+            githubHelper.getFileAsBuffer(github, {
+                    repo: repoName,
+                    filepath: filePath
+                })
+                .then(result => {
+                    expect(result).to.be.null;
+                    done();
+                })
+                .catch(done);
+        });
+    });
+
     describe('getPackageJson()', () => {
         it('when package.json exist it should succeed', (done) => {
             var github = githubHelper.buildClient();
