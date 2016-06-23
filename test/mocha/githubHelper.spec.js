@@ -39,6 +39,10 @@ describe('githubHelper', () => {
                     })
                     .catch(done);
             });
+        } else {
+            it('should exist', () => {
+                expect(githubHelper.getUsername).to.be.a('function');
+            });
         }
 
     });
