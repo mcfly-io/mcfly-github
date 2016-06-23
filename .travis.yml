@@ -20,4 +20,4 @@ deploy:
     tags: true
     all_branches: true
     node: '4'
-    repo: mcfly-io/mcfly-semantic-release
+    repo: mcfly-io/mcfly-github
