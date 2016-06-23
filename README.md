@@ -24,28 +24,32 @@ then use `getClient()` without any parameters
 ## Functions
 
 <dl>
-<dt><a href="#getUsername">getUsername()</a> ⇒ <code>Promise</code></dt>
+<dt><a href="#getUsername">getUsername()</a> ⇒ <code>Promise.&lt;String&gt;</code></dt>
 <dd><p>Gets the git user name</p>
 </dd>
-<dt><a href="#buildClient">buildClient(username, password)</a> ⇒ <code>Object</code></dt>
-<dd><p>Gets a connected github client</p>
+<dt><a href="#buildClient">buildClient([username], [password])</a> ⇒ <code>Object</code></dt>
+<dd><p>Gets a connected github client
+can fallback to process.env.GITHUB_TOKEN or ./files/testAuth.json</p>
 </dd>
-<dt><a href="#checkClient">checkClient(github)</a> ⇒ <code>Promise</code></dt>
+<dt><a href="#checkClient">checkClient(github)</a> ⇒ <code>Promise.&lt;Object&gt;</code></dt>
 <dd><p>Checks the validity of the credentials</p>
 </dd>
-<dt><a href="#getRepo">getRepo(github, param)</a> ⇒ <code>Promise</code></dt>
+<dt><a href="#getClient">getClient(username, password)</a> ⇒ <code>Promise.&lt;Object&gt;</code></dt>
+<dd><p>Gets a valid github client by checking the credentials</p>
+</dd>
+<dt><a href="#getRepo">getRepo(github, param)</a> ⇒ <code>Promise.&lt;Object&gt;</code></dt>
 <dd><p>Gets a specific repo</p>
 </dd>
-<dt><a href="#getAllRepos">getAllRepos(github, param)</a> ⇒ <code>Promise</code></dt>
+<dt><a href="#getAllRepos">getAllRepos(github, param)</a> ⇒ <code>Promise.&lt;Array&gt;</code></dt>
 <dd><p>Gets all the repo</p>
 </dd>
-<dt><a href="#getFileAsBuffer">getFileAsBuffer(github, param)</a> ⇒ <code>Promise</code></dt>
+<dt><a href="#getFileAsBuffer">getFileAsBuffer(github, param)</a> ⇒ <code>Promise.&lt;Buffer&gt;</code></dt>
 <dd><p>Gets the content of the file in an object</p>
 </dd>
-<dt><a href="#getPackageJson">getPackageJson(github, param)</a> ⇒ <code>Promise</code></dt>
+<dt><a href="#getPackageJson">getPackageJson(github, param)</a> ⇒ <code>Promise.&lt;Object&gt;</code></dt>
 <dd><p>Gets the content of package.json</p>
 </dd>
-<dt><a href="#createTokenFile">createTokenFile(username, password, tokenName, filename)</a> ⇒ <code>Promise</code></dt>
+<dt><a href="#createTokenFile">createTokenFile(username, password, tokenName, filename)</a> ⇒ <code>Promise.&lt;Object&gt;</code></dt>
 <dd><p>Creates a token file</p>
 </dd>
 <dt><a href="#createRelease">createRelease(param)</a> ⇒ <code>Promise</code></dt>
@@ -55,43 +59,57 @@ then use `getClient()` without any parameters
 
 <a name="getUsername"></a>
 
-## getUsername() ⇒ <code>Promise</code>
+## getUsername() ⇒ <code>Promise.&lt;String&gt;</code>
 Gets the git user name
 
 **Kind**: global function
-**Returns**: <code>Promise</code> - The username
+**Returns**: <code>Promise.&lt;String&gt;</code> - The username
 <a name="buildClient"></a>
 
-## buildClient(username, password) ⇒ <code>Object</code>
+## buildClient([username], [password]) ⇒ <code>Object</code>
 Gets a connected github client
+can fallback to process.env.GITHUB_TOKEN or ./files/testAuth.json
 
 **Kind**: global function
 **Returns**: <code>Object</code> - The github client
 
 | Param | Type | Description |
 | --- | --- | --- |
-| username | <code>String</code> | The github username |
-| password | <code>String</code> | The github password |
+| [username] | <code>String</code> | The github username |
+| [password] | <code>String</code> | The github password |
 
 <a name="checkClient"></a>
 
-## checkClient(github) ⇒ <code>Promise</code>
+## checkClient(github) ⇒ <code>Promise.&lt;Object&gt;</code>
 Checks the validity of the credentials
 
 **Kind**: global function
-**Returns**: <code>Promise</code> - The github client
+**Returns**: <code>Promise.&lt;Object&gt;</code> - The github client
 
 | Param | Type | Description |
 | --- | --- | --- |
 | github | <code>Object</code> | The github client |
 
+<a name="getClient"></a>
+
+## getClient(username, password) ⇒ <code>Promise.&lt;Object&gt;</code>
+Gets a valid github client by checking the credentials
+
+**Kind**: global function
+**Returns**: <code>Promise.&lt;Object&gt;</code> - The github client
+
+| Param | Type | Description |
+| --- | --- | --- |
+| username | <code>String</code> | The github username |
+| password | <code>String</code> | The github password |
+
 <a name="getRepo"></a>
 
-## getRepo(github, param) ⇒ <code>Promise</code>
+## getRepo(github, param) ⇒ <code>Promise.&lt;Object&gt;</code>
 Gets a specific repo
 
 **Kind**: global function
-**Returns**: <code>Promise</code> - The resulting repository
+**Returns**: <code>Promise.&lt;Object&gt;</code> - The resulting repository
 
 | Param | Type | Description |
 | --- | --- | --- |
@@ -100,11 +118,11 @@ Gets a specific repo
 
 <a name="getAllRepos"></a>
 
-## getAllRepos(github, param) ⇒ <code>Promise</code>
+## getAllRepos(github, param) ⇒ <code>Promise.&lt;Array&gt;</code>
 Gets all the repo
 
 **Kind**: global function
-**Returns**: <code>Promise</code> - An array of the repos found
+**Returns**: <code>Promise.&lt;Array&gt;</code> - An array of the repos found
 
 | Param | Type | Description |
 | --- | --- | --- |
@@ -113,11 +131,11 @@ Gets all the repo
 
 <a name="getFileAsBuffer"></a>
 
-## getFileAsBuffer(github, param) ⇒ <code>Promise</code>
+## getFileAsBuffer(github, param) ⇒ <code>Promise.&lt;Buffer&gt;</code>
 Gets the content of the file in an object
 
 **Kind**: global function
-**Returns**: <code>Promise</code> - A stream of the file
+**Returns**: <code>Promise.&lt;Buffer&gt;</code> - A stream of the file
 
 | Param | Type | Description |
 | --- | --- | --- |
@@ -126,11 +144,11 @@ Gets the content of the file in an object
 
 <a name="getPackageJson"></a>
 
-## getPackageJson(github, param) ⇒ <code>Promise</code>
+## getPackageJson(github, param) ⇒ <code>Promise.&lt;Object&gt;</code>
 Gets the content of package.json
 
 **Kind**: global function
-**Returns**: <code>Promise</code> - package.json as an object
+**Returns**: <code>Promise.&lt;Object&gt;</code> - package.json as an object
 
 | Param | Type | Description |
 | --- | --- | --- |
@@ -139,11 +157,11 @@ Gets the content of package.json
 
 <a name="createTokenFile"></a>
 
-## createTokenFile(username, password, tokenName, filename) ⇒ <code>Promise</code>
+## createTokenFile(username, password, tokenName, filename) ⇒ <code>Promise.&lt;Object&gt;</code>
 Creates a token file
 
 **Kind**: global function
-**Returns**: <code>Promise</code> - The result of the api call to create the token
+**Returns**: <code>Promise.&lt;Object&gt;</code> - The result of the api call to create the token
 
 | Param | Type | Description |
 | --- | --- | --- |
@@ -163,6 +181,7 @@ Creates a release on github
 | Param | Type | Description |
 | --- | --- | --- |
 | param | <code>Object</code> | An object with the following properties: github, owner, repo, nextVersion, changelogContent |
+
 
 [npm-image]: https://badge.fury.io/js/mcfly-github.svg
 [npm-url]: https://npmjs.org/package/mcfly-github
