@@ -40,8 +40,13 @@ describe('githubHelper', () => {
                     .catch(done);
             });
         } else {
-            it('should exist', () => {
-                expect(githubHelper.getUsername).to.be.a('function');
+            it('should returns null on travis', (done) => {
+                githubHelper.getUsername()
+                    .then(username => {
+                        expect(username).to.be.null;
+                        done();
+                    })
+                    .catch(done);
             });
         }
 
