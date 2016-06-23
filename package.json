@@ -1,12 +1,12 @@
 {
     "name": "mcfly-github",
     "version": "1.0.1",
-    "description": "A github helper",
+    "description": "A github helper library",
     "main": "index.js",
     "dependencies": {
-        "bluebird": "^3.4.1",
-        "github": "^1.4.0",
-        "jsonfile": "^2.3.1"
+        "bluebird": "3.4.1",
+        "github": "1.4.0",
+        "jsonfile": "2.3.1"
     },
     "devDependencies": {
         "chai": "^3.5.0",
