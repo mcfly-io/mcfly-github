@@ -1,7 +1,30 @@
 'use strict';
 
 var githubHelper = require('../../lib/githubHelper');
-var expect = require('chai').expect;
+var chai = require('chai');
+var expect = chai.expect;
+var sinon = require('sinon');
+var sinonChai = require('sinon-chai');
+var chaiFs = require('chai-fs');
+var chaiJsonSchema = require('chai-json-schema');
+chai.use(sinonChai);
+chai.use(chaiFs);
+chai.use(chaiJsonSchema);
+
+var githubMock = {
+    repos: {
+        createRelease: sinon.spy(function(param, cb) {
+            cb(null, param);
+        })
+    },
+    authorization: {
+        create: sinon.spy(function(param, cb) {
+            cb(null, {
+                token: 'xqsfqf'
+            });
+        })
+    }
+};
 
 describe('githubHelper', () => {
 
@@ -144,6 +167,60 @@ describe('githubHelper', () => {
                     done();
                 })
                 .catch(done);
+        });
+    });
+
+    describe('createRelease()', () => {
+        it('should succeed', done => {
+            var param = {
+                github: githubMock,
+                owner: 'toto',
+                repo: 'myrepo',
+                nextVersion: '1.3.2',
+                changelogContent: 'This is changelog'
+            };
+            var expectedParam = {
+                user: param.owner,
+                repo: param.repo,
+                tag_name: param.nextVersion,
+                name: 'v' + param.nextVersion,
+                body: param.changelogContent
+            };
+            githubHelper.createRelease(param)
+                .then(res => {
+                    expect(githubMock.repos.createRelease).to.have.been.calledWith(expectedParam);
+                    done();
+                })
+                .catch(done);
+
+        });
+    });
+
+    describe('createTokenFile()', () => {
+        it('should succeed', done => {
+            sinon.stub(githubHelper, 'buildClient', function() {
+                return githubMock;
+            });
+
+            githubHelper.createTokenFile('toto', 'pwd', 'mytoken', './test/results/testAuth.json')
+                .then(res => {
+                    expect(githubMock.authorization.create).to.have.been.calledWith({
+                        scopes: ['user', 'public_repo', 'repo', 'repo:status', 'gist'],
+                        note: 'mytoken'
+                    });
+                    expect('./test/results/testAuth.json').to.be.a.file().with.json.using.schema({
+                        type: 'object',
+                        required: ['token'],
+                        properties: {
+                            token: {
+                                type: 'string'
+                            }
+                        }
+                    });
+                    done();
+                })
+                .catch(done);
+
         });
     });
 
