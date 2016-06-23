@@ -11,6 +11,16 @@
 npm i --save mcfly-github
 ```
 
+## How to create a github token file
+Execute the following
+```js
+githubHelper.createTokenFile('<your_github_login>', 
+  '<your_github_password>', 
+  'github-repos', 
+  './files/testAuth.json'); 
+```
+then use `getClient()` without any parameters
+
 ## Functions
 
 <dl>
