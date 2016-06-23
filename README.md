@@ -34,7 +34,7 @@ can fallback to process.env.GITHUB_TOKEN or ./files/testAuth.json</p>
 <dt><a href="#checkClient">checkClient(github)</a> ⇒ <code>Promise.&lt;Object&gt;</code></dt>
 <dd><p>Checks the validity of the credentials</p>
 </dd>
-<dt><a href="#getClient">getClient(username, password)</a> ⇒ <code>Promise.&lt;Object&gt;</code></dt>
+<dt><a href="#getClient">getClient([username], [password])</a> ⇒ <code>Promise.&lt;Object&gt;</code></dt>
 <dd><p>Gets a valid github client by checking the credentials</p>
 </dd>
 <dt><a href="#getRepo">getRepo(github, param)</a> ⇒ <code>Promise.&lt;Object&gt;</code></dt>
@@ -92,7 +92,7 @@ Checks the validity of the credentials
 
 <a name="getClient"></a>
 
-## getClient(username, password) ⇒ <code>Promise.&lt;Object&gt;</code>
+## getClient([username], [password]) ⇒ <code>Promise.&lt;Object&gt;</code>
 Gets a valid github client by checking the credentials
 
 **Kind**: global function
@@ -100,8 +100,8 @@ Gets a valid github client by checking the credentials
 
 | Param | Type | Description |
 | --- | --- | --- |
-| username | <code>String</code> | The github username |
-| password | <code>String</code> | The github password |
+| [username] | <code>String</code> | The github username |
+| [password] | <code>String</code> | The github password |
 
 <a name="getRepo"></a>
 
@@ -167,7 +167,7 @@ Creates a token file
 | --- | --- | --- |
 | username | <code>String</code> | The github username |
 | password | <code>String</code> | The github password |
-| tokenName | <code>Strong</code> | The name of the token (visible in Person access tokens on https://github.com/settings/tokens) |
+| tokenName | <code>String</code> | The name of the token (visible in Person access tokens on https://github.com/settings/tokens) |
 | filename | <code>String</code> | The filename to store the resulting token |
 
 <a name="createRelease"></a>
