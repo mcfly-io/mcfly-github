@@ -134,7 +134,7 @@ describe('githubHelper', () => {
                 .catch(done);
         });
 
-        it.only('when file exists and is root it should succeed', (done) => {
+        it('when file exists and is root it should succeed', (done) => {
             var github = githubHelper.buildClient();
             var repoName = 'Yoobic/loopback-node-red';
             var filePath = '.gitignore';
