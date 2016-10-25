@@ -134,6 +134,21 @@ describe('githubHelper', () => {
                 .catch(done);
         });
 
+        it.only('when file exists and is root it should succeed', (done) => {
+            var github = githubHelper.buildClient();
+            var repoName = 'Yoobic/loopback-node-red';
+            var filePath = '.gitignore';
+            githubHelper.getFileAsBuffer(github, {
+                    repo: repoName,
+                    filepath: filePath
+                })
+                .then(buffer => {
+                    expect(buffer).not.to.be.null;
+                    done();
+                })
+                .catch(done);
+        });
+
         it('when file does not exist it should return null', (done) => {
             var github = githubHelper.buildClient();
             var repoName = 'Yoobic/loopback-node-red';
