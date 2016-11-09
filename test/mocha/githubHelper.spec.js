@@ -204,7 +204,7 @@ describe('githubHelper', () => {
                 changelogContent: 'This is changelog'
             };
             var expectedParam = {
-                user: param.owner,
+                owner: param.owner,
                 repo: param.repo,
                 tag_name: param.nextVersion,
                 name: 'v' + param.nextVersion,
