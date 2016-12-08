@@ -103,6 +103,37 @@ describe('githubHelper', () => {
 
     });
 
+    describe('getBranches()', () => {
+        it('should succeed', (done) => {
+            var github = githubHelper.buildClient();
+            var repoName = 'mcfly-io/ngux-loader';
+            githubHelper.getBranches(github, repoName)
+                .then(branches => {
+                    expect(branches.length).to.be.above(0);
+                    done();
+                })
+                .catch(done);
+        });
+
+    });
+
+    describe('getTree()', () => {
+        it('should succeed', (done) => {
+            var github = githubHelper.buildClient();
+            var repoName = 'mcfly-io/ngux-loader';
+            githubHelper.getBranches(github, repoName)
+                .then(branches => {
+                    let sha = branches[0].commit.sha;
+                    return githubHelper.getTree(github, repoName, sha);
+                })
+                .then(tree => {
+                    expect(tree.length).to.be.above(0);
+                    done();
+                })
+                .catch(done);
+        });
+
+    });
     describe('getRepo()', () => {
         it('should succeed', (done) => {
             var github = githubHelper.buildClient();
