@@ -43,6 +43,12 @@ can fallback to process.env.GITHUB_TOKEN or ./files/testAuth.json</p>
 <dt><a href="#getAllRepos">getAllRepos(github, param)</a> ⇒ <code>Promise.&lt;Array&gt;</code></dt>
 <dd><p>Gets all the repo</p>
 </dd>
+<dt><a href="#getBranches">getAllBranches(github, repo)</a> ⇒ <code>Promise.&lt;Array&gt;</code></dt>
+<dd><p>Gets all the branches of the repo</p>
+</dd>
+<dt><a href="#getTree">getTree(github, repo, sha)</a> ⇒ <code>Promise.&lt;Array&gt;</code></dt>
+<dd><p>Gets the tree of a specific sha in a repo</p>
+</dd>
 <dt><a href="#getFileAsBuffer">getFileAsBuffer(github, param)</a> ⇒ <code>Promise.&lt;Buffer&gt;</code></dt>
 <dd><p>Gets the content of the file in an object</p>
 </dd>
@@ -130,6 +136,33 @@ Gets all the repo
 | param | <code>Object</code> | An object with the following properties: per_page, page |
 
 <a name="getFileAsBuffer"></a>
+
+## getBranches(github, repo) ⇒ <code>Promise.&lt;Array&gt;</code>
+Gets all branches of a repo
+
+**Kind**: global function
+**Returns**: <code>Promise.&lt;Array&gt;</code> - An array of the branches found
+
+| Param | Type | Description |
+| --- | --- | --- |
+| github | <code>Object</code> | The github client |
+| repo | <code>String</code> | The repo full name |
+
+<a name="getBranches"></a>
+
+## getTree(github, repo, sha) ⇒ <code>Promise.&lt;Array&gt;</code>
+Gets tree of specific sha in a repo
+
+**Kind**: global function
+**Returns**: <code>Promise.&lt;Array&gt;</code> - An array of files and folders
+
+| Param | Type | Description |
+| --- | --- | --- |
+| github | <code>Object</code> | The github client |
+| repo | <code>String</code> | The repo full name |
+| sha | <code>String</code> | The sha of the repo |
+
+<a name="getBranches"></a>
 
 ## getFileAsBuffer(github, param) ⇒ <code>Promise.&lt;Buffer&gt;</code>
 Gets the content of the file in an object
