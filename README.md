@@ -165,7 +165,7 @@ Gets tree of specific sha in a repo
 <a name="getBranches"></a>
 
 ## getFileAsBuffer(github, param) ⇒ <code>Promise.&lt;Buffer&gt;</code>
-Gets the content of the file in an object
+Gets the content of the file in an object. If a sha is provided, the file is returned for the specific sha
 
 **Kind**: global function
 **Returns**: <code>Promise.&lt;Buffer&gt;</code> - A stream of the file
@@ -173,7 +173,7 @@ Gets the content of the file in an object
 | Param | Type | Description |
 | --- | --- | --- |
 | github | <code>Object</code> | The github client |
-| param | <code>Object</code> | An object with the following properties: user, repo, filepath |
+| param | <code>Object</code> | An object with the following properties: user, repo, filepath,sha |
 
 <a name="getPackageJson"></a>
 

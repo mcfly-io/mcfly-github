@@ -7,6 +7,7 @@ var sinon = require('sinon');
 var sinonChai = require('sinon-chai');
 var chaiFs = require('chai-fs');
 var chaiJsonSchema = require('chai-json-schema');
+
 chai.use(sinonChai);
 chai.use(chaiFs);
 chai.use(chaiJsonSchema);
@@ -163,6 +164,35 @@ describe('githubHelper', () => {
                     done();
                 })
                 .catch(done);
+        });
+
+        it('should return file by sha', () => {
+            var github = githubHelper.buildClient();
+            var repoName = 'mcfly-io/mcfly-github';
+            //var filePath = 'templates/workbook_4.0.0.xlsx';
+            return githubHelper.getFileAsBuffer(github, {
+                    repo: repoName,
+                    //filepath: filePath,
+                    sha: '768f3634d91ee243b1860f47fbb2eed8f9b4de35'
+                })
+                .then(buffer => {
+                    expect(JSON.parse(buffer.toString()).version).to.equal('1.0.1');
+                });
+        });
+
+        it('should return file by sha if both filenames and sha are specified', () => {
+            var github = githubHelper.buildClient();
+            var repoName = 'mcfly-io/mcfly-github';
+            var filePath = 'templates/workbook_4.0.0.xlsx';
+            return githubHelper.getFileAsBuffer(github, {
+                    repo: repoName,
+                    filepath: filePath,
+                    sha: '768f3634d91ee243b1860f47fbb2eed8f9b4de35'
+                })
+                .then(buffer => {
+                    expect(buffer).not.to.be.null;
+                    expect(JSON.parse(buffer.toString()).version).to.equal('1.0.1');
+                });
         });
 
         it('when file exists and is root it should succeed', (done) => {
