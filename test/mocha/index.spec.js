@@ -21,9 +21,9 @@ describe('index', () => {
         expect(indexHelper.getRepo).to.be.a('function');
     });
 
-    it('should expose getAllRepos()', () => {
-        expect(indexHelper.getAllRepos).to.be.a('function');
-    });
+    // it('should expose getAllRepos()', () => {
+    //     expect(indexHelper.getAllRepos).to.be.a('function');
+    // });
 
     it('should expose getFileAsBuffer()', () => {
         expect(indexHelper.getFileAsBuffer).to.be.a('function');
