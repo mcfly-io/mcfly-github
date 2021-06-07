@@ -40,9 +40,9 @@ can fallback to process.env.GITHUB_TOKEN or ./files/testAuth.json</p>
 <dt><a href="#getRepo">getRepo(github, param)</a> ⇒ <code>Promise.&lt;Object&gt;</code></dt>
 <dd><p>Gets a specific repo</p>
 </dd>
-<dt><a href="#getAllRepos">getAllRepos(github, param)</a> ⇒ <code>Promise.&lt;Array&gt;</code></dt>
-<dd><p>Gets all the repo</p>
-</dd>
+<!-- <dt><a href="#getAllRepos">getAllRepos(github, param)</a> ⇒ <code>Promise.&lt;Array&gt;</code></dt>
+<dd><p>Gets all the repo</p> -->
+<!-- </dd> -->
 <dt><a href="#getBranches">getAllBranches(github, repo)</a> ⇒ <code>Promise.&lt;Array&gt;</code></dt>
 <dd><p>Gets all the branches of the repo</p>
 </dd>
@@ -122,18 +122,18 @@ Gets a specific repo
 | github | <code>Object</code> | The github client |
 | param | <code>Object</code> | An object with the following properties: user, repo |
 
-<a name="getAllRepos"></a>
+<!-- <a name="getAllRepos"></a>
 
 ## getAllRepos(github, param) ⇒ <code>Promise.&lt;Array&gt;</code>
-Gets all the repo
+Gets all the repo -->
 
-**Kind**: global function
+<!-- **Kind**: global function
 **Returns**: <code>Promise.&lt;Array&gt;</code> - An array of the repos found
 
 | Param | Type | Description |
 | --- | --- | --- |
 | github | <code>Object</code> | The github client |
-| param | <code>Object</code> | An object with the following properties: per_page, page |
+| param | <code>Object</code> | An object with the following properties: per_page, page | -->
 
 <a name="getFileAsBuffer"></a>
 
