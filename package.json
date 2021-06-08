@@ -1,6 +1,6 @@
 {
   "name": "mcfly-github",
-  "version": "1.0.14",
+  "version": "1.0.15",
   "description": "A github helper library",
   "main": "index.js",
   "dependencies": {
