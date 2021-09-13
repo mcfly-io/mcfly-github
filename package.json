@@ -9,8 +9,7 @@
     "github": "5.3.3",
     "install": "^0.13.0",
     "jsonfile": "2.4.0",
-    "lodash": "^4.16.4",
-    "npm": "^7.16.0"
+    "lodash": "^4.16.4"
   },
   "devDependencies": {
     "chai": "^3.5.0",
